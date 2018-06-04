@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -15,16 +16,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 準備資料，塞50個項目到ArrayList裡
-        ArrayList<String> mData = new ArrayList<String>();
-        for(int i = 0; i < 50; i++) {
-
-            mData.add("項目"+i);
-        }
+        //測試資料
+        todolistModel data = new todolistModel(getApplicationContext());
+        data.insert(new todolistItem(-1, "hello world", null));
+        data.insert(new todolistItem(-1, "lunch time", null));
 
         //設定recycleView
         recyclerView = findViewById(R.id.todolist_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new todolistAdapter(mData));
+        recyclerView.setAdapter(new todolistAdapter(data.getAll()));
     }
 }

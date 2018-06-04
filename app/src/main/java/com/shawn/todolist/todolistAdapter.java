@@ -8,11 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class todolistAdapter extends RecyclerView.Adapter<todolistAdapter.ViewHolder> {
-    ArrayList<String> m_data;
+    List<todolistItem> m_data;
 
-    public todolistAdapter(ArrayList<String> data) {
+    public todolistAdapter(List<todolistItem> data) {
         m_data = data;
     }
 
@@ -25,7 +26,7 @@ public class todolistAdapter extends RecyclerView.Adapter<todolistAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.title.setText(m_data.get(position));
+        holder.title.setText(m_data.get(position).getTitle());
     }
 
     @Override
